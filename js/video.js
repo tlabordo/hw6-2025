@@ -12,66 +12,65 @@ window.addEventListener("load", function () {
 	const volumeSlider = document.getElementById("slider");
 	const vintageBtn = document.getElementById("vintage");
 	const originalBtn = document.getElementById("orig");
-  
+
 	// Initialize settings
 	video.autoplay = false;
 	video.loop = false;
 	video.volume = 1.0;
-	volumeSpan.textContent = `${video.volume * 100}%`;
-  
+	// volumeSpan.textContent = `${video.volume * 100}%`;
+
 	// Play video
 	playBtn.addEventListener("click", function () {
-	  video.play();
-	  volumeSpan.textContent = `${video.volume * 100}%`;
-	});
-  
+		video.play();
+		volumeSpan.textContent = `${Math.round(video.volume * 100)}%`;
+	  });
 	// Pause video
 	pauseBtn.addEventListener("click", function () {
-	  video.pause();
+		video.pause();
 	});
-  
+
 	// Slow down
 	slowerBtn.addEventListener("click", function () {
-	  video.playbackRate *= 0.9;
-	  console.log("New speed:", video.playbackRate);
+		video.playbackRate *= 0.9;
+		console.log("New speed:", video.playbackRate);
 	});
-  
+
 	// Speed up
 	fasterBtn.addEventListener("click", function () {
-	  video.playbackRate *= 1.1;
-	  console.log("New speed:", video.playbackRate);
+		video.playbackRate *= 1.1;
+		console.log("New speed:", video.playbackRate);
 	});
-  
+
 	// Skip ahead
 	skipBtn.addEventListener("click", function () {
-	  if (video.currentTime + 10 >= video.duration) {
-		video.currentTime = 0;
-	  } else {
-		video.currentTime += 10;
-	  }
-	  console.log("Current time:", video.currentTime);
+		if (video.currentTime + 10 >= video.duration) {
+			video.currentTime = 0;
+		} else {
+			video.currentTime += 10;
+		}
+		console.log("Current time:", video.currentTime);
 	});
-  
+
 	// Mute/unmute
 	muteBtn.addEventListener("click", function () {
-	  video.muted = !video.muted;
-	  muteBtn.textContent = video.muted ? "Unmute" : "Mute";
+		video.muted = !video.muted;
+		muteBtn.textContent = video.muted ? "Unmute" : "Mute";
 	});
-  
+
 	// Volume slider
 	volumeSlider.addEventListener("input", function () {
-	  video.volume = volumeSlider.value / 100;
-	  volumeSpan.textContent = `${video.volume * 100}%`;
-	});
-  
+		video.volume = volumeSlider.value / 100;
+		volumeSpan.textContent = `${video.volume * 100}%`;
+	  });
+
 	// Old School style
 	vintageBtn.addEventListener("click", function () {
-	  video.classList.add("oldSchool");
+		video.classList.add("oldSchool");
 	});
-  
+
 	// Original style
 	originalBtn.addEventListener("click", function () {
-	  video.classList.remove("oldSchool");
+		video.classList.remove("oldSchool");
 	});
-  });
-  
+});
+
